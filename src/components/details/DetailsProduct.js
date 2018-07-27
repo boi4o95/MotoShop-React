@@ -24,7 +24,7 @@ class DetailsProduct extends Component {
 
     render = () => (
         <div >
-            {this.state.product.map(p => <Details key={p.id} {...p} />)}
+            {this.state.product.map(p => <Details key={p._id} {...p} />)}
         </div>
     )
 

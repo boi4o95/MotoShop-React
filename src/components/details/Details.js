@@ -6,11 +6,11 @@ class Details extends Component {
     render() {
         const year = <span>Година: {this.props.year}</span>
         const buyBtn = <Link className="buy" to="/">ПОРЪЧАЙ СЕГА</Link>
-        const deleteBtn = <Link className="buy" to={"/delete/" + this.props._id }>delete</Link>
+        const editBtn = <Link className="buy" to={"/edit/" + this.props._id }>edit</Link>
         let description = this.props.description.split('\n')
        
         return (
-            <div className="car-container">
+            <div key={this.props._id} className="car-container">
                 <section>
                     <img src={this.props.imageUrl} />
                     <section>
@@ -25,7 +25,7 @@ class Details extends Component {
                     <span>{this.props.model}</span>
                     <br />
                     <strong className="price">Price: {this.props.price} lv</strong>
-                    {sessionStorage.getItem('Roles') ? deleteBtn : buyBtn}
+                    {sessionStorage.getItem('Roles') ? editBtn : buyBtn}
                     <br />
                     {this.props.year ? year : <br />}
                 </section>

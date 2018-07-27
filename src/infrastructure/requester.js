@@ -39,8 +39,8 @@ function post(module, endpoint, auth, data) {
 }
 
 // Function to return PUT promise
-function update(module, endpoint, auth, query,  data) {
-    let req = makeRequest('PUT', module, endpoint, auth, query);
+function update(module, endpoint, auth,  data) {
+    let req = makeRequest('PUT', module, endpoint, auth);
     req.data = data;
     return $.ajax(req);
 }

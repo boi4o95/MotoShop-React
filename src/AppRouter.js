@@ -12,6 +12,7 @@ import SubcategoryList from './components/product/SubcategoryList'
 import DetailsProduct from './components/details/DetailsProduct'
 import ContactForm from './components/contacts/ContactForm'
 import Delete from './components/admin/DeleteProduct'
+import EditProduct from './components/admin/EditProduct'
 
 const AppRouter = () => (
     <section id="main-container">
@@ -34,6 +35,7 @@ const AppRouter = () => (
         <Route path='/details/:_id' component={DetailsProduct} />
 
         <Route path='/create' component={withAdminAuthorization(CreateProduct)} />
+        <Route path='/edit/:_id' component={withAdminAuthorization(EditProduct)} />
         <Route path='/delete/:_id' component={withAdminAuthorization(Delete)} />
     </section>
 )
