@@ -22,7 +22,6 @@ class EiditForm extends Component {
     componentDidMount = () => {
         requester.get('appdata', `product`, 'kinvey', {"_id" : this.props.match.params._id}).then(res => {
             let data = res[0]
-            console.log(data)
             this.setState( { detailTopName: data.detailTopName , make: data.make,  model: data.model,
                 imageUrl: data.imageUrl, year: data.year, category: data.category, subcategory: data.subcategory,
                 description: data.description, price: data.price})
@@ -39,7 +38,6 @@ class EiditForm extends Component {
         e.preventDefault()
 
         requester.update('appdata', `product/${this.props.match.params._id}`, 'kinvey', this.state).then(res => {
-            console.log(res)
             observer.trigger(observer.events.notification, { type: "success", message: "Edit successful." })
             this.props.history.push('/')
         })
@@ -48,7 +46,6 @@ class EiditForm extends Component {
     render() {
         return (
             <div>
-                {console.log(this.state)}
                 <h1 className="text">Eidit Product</h1>
                 <form onSubmit={this.submitEdit.bind(this)} id="form">
                     <input onChange={this.hendlerChange} name="detailTopName" value={this.state.detailTopName} required />

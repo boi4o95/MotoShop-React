@@ -50,9 +50,18 @@ function remove(module, endpoint, auth, query) {
     return $.ajax(makeRequest('DELETE', module, endpoint, auth, query));
 }
 
+function email(data){
+    return $.ajax({
+        url: "https://formspree.io/boi4o_123@abv.bg", 
+        method: "POST",
+        data: data,
+        dataType: "json"
+    });
+}
 export default {
     get,
     post,
     update,
-    remove
+    remove,
+    email
 }
