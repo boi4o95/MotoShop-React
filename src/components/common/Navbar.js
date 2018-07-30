@@ -26,6 +26,7 @@ class Navbar extends Component {
                             </ul>
                         </li>
                         <li><Link to="/contacts">Контакти</Link></li>
+                        {sessionStorage.getItem('Roles') ? <li><Link to="/">поръчки</Link></li> : null }
                     </ul>
                 </nav>
         )

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import requester from '../../infrastructure/requester'
-import observer from '../../infrastructure/observer';
+import observer from '../../infrastructure/observer'
 
 class CreateForm extends Component {
     constructor(props) {

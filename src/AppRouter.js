@@ -13,6 +13,7 @@ import DetailsProduct from './components/details/DetailsProduct'
 import ContactForm from './components/contacts/ContactForm'
 import Delete from './components/admin/DeleteProduct'
 import EditProduct from './components/admin/EditProduct'
+import BuyForm from './components/product/BuyForm'
 
 const AppRouter = () => (
     <section id="main-container">
@@ -33,6 +34,8 @@ const AppRouter = () => (
         <Route path='/:quipment/:boot' component={SubcategoryList} />
         <Route path='/:quipment/:gloves' component={SubcategoryList} />
         <Route path='/details/:_id' component={DetailsProduct} />
+
+        <Route path='/buy/:_id' component={BuyForm}/>
 
         <Route path='/create' component={withAdminAuthorization(CreateProduct)} />
         <Route path='/edit/:_id' component={withAdminAuthorization(EditProduct)} />

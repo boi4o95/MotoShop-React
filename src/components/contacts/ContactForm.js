@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import contact from '../../image/contacts.jpg'
 import requester from '../../infrastructure/requester'
+import observer from '../../infrastructure/observer'
 
 class ContactForm extends Component {
     constructor(props) {
@@ -24,6 +25,8 @@ class ContactForm extends Component {
         e.preventDefault()
 
         requester.email(this.state).then(res => {
+            observer.trigger(observer.events.notification, { type: "success", message: "Successful send email." })
+            this.props.history.push('/')
         })
     }
     render() {

@@ -348,6 +348,8 @@ label {
   font-size: 30px;
   padding: 5px 0 5px 0;
   width: 250px;
+  color: black;
+  margin-bottom: 20px;
 }
 [title~=side] {
   /*  selector is used to select elements with an attribute value containing a specified word.*/
@@ -438,4 +440,32 @@ input[type="submit"]:hover {
 
 #error {
   background: #F50;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+}
+
+.cart-info table {
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: 50px;
+    border-collapse: collapse;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.cart-info thead td {
+  color: black;
+  font-weight: bold;
+  background-color: #F7F7F7;
+  border-bottom: 1px solid black;
+}
+
+.cart-info tr {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
