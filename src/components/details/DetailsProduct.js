@@ -11,14 +11,10 @@ class DetailsProduct extends Component {
         }
     }
 
-    getProduct = () => {
+    componentDidMount = () => {
         requester.get('appdata', `product`, 'kinvey', {"_id" : this.props.match.params._id}).then(res => {
             this.setState({ product: res })
         })
-    }
-
-    componentDidMount = () => {
-        this.getProduct()
     }
 
 

@@ -469,3 +469,26 @@ input[type="submit"]:hover {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
+
+.orders-info table {
+  width: 70%;
+  margin-left: 15%;
+  margin-bottom: 50px;
+  border-collapse: collapse;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.orders-info thead td {
+  color: black;
+  font-weight: bold;
+  background-color: #F7F7F7;
+  border-bottom: 1px solid black;
+}
+
+.orders-info tr {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
