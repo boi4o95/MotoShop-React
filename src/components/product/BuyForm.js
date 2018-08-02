@@ -14,7 +14,8 @@ class Product extends Component {
             make: '',
             model: '',
             imageUrl: '',
-            price: ''
+            price: '',
+            phoneNumber: ''
         }
     }
 
@@ -83,6 +84,9 @@ class Product extends Component {
                             <br />
                             <label><span className="contact-span"> * </span>  E-mail:</label>
                             <input onChange={this.hendlerChange} type="email" name="email" size="30" required />
+                            <br />
+                            <label> <span className="contact-span"> * </span>  Телефон:</label>
+                            <input onChange={this.hendlerChange} type="text" name="phoneNumber" size="10" required />
                             <br />
                             <label id="required" className="contact-span">Маркираните със звездичка (*) полета са задължителни!</label>
                             <br />

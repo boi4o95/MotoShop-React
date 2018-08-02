@@ -5,7 +5,7 @@ class Product extends Component {
     render() {
         const year = <span><br/>Година: {this.props.year}</span>
         const buyBtn = <Link className="buy" to={"/buy/"+ this.props._id}>Купи</Link>
-        const deleteBtn = <Link className="buy" to={"/delete/" + this.props._id }>delete</Link>
+        const deleteBtn = <Link className="delete" to={"/product/delete/" + this.props._id }>delete</Link>
         return (
             <div className="car-container">
                 <section>

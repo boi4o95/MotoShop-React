@@ -5,9 +5,12 @@ import observer from '../../infrastructure/observer';
 
 class Delete extends Component {
     delete = () => {
-        requester.remove('appdata', 'product', 'kinvey', {"_id" : this.props.match.params._id}).then(res => {
-            observer.trigger(observer.events.notification, { type: "success", message: "Delete successful." })
+        console.log(this.props.match.params)
+        let query = this.props.match.params.query
+        requester.remove('appdata', query, 'kinvey', {"_id" : this.props.match.params._id}).then(res => {
+            observer.trigger(observer.events.notification, { type: "success", message: `Delete successful ${query}.` })
         })
+        
     }
 
     render = () => {

@@ -5,7 +5,7 @@ class Details extends Component {
     render() {
         const year = <span>Година: {this.props.year}</span>
         const buyBtn =  <Link className="buy" to={"/buy/"+ this.props._id}>Купи</Link>
-        const editBtn = <Link className="buy" to={"/edit/" + this.props._id }>edit</Link>
+        const editBtn = <Link className="edit" to={"/edit/" + this.props._id }>edit</Link>
         let description = this.props.description.split('\n')
        
         return (
