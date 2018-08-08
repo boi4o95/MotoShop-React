@@ -39,7 +39,6 @@ class ContactForm extends Component {
                     <strong className="home">e-mail: motoShop@lero.biz</strong><p>&nbsp;</p>
                 <section id="mainsection">
                     <div id="form">
-                    {console.log(this.state)}
                         <form className="form" onSubmit={this.submitEdit.bind(this)}>
                             <label id="title">Форма за контакти:</label> <br />
                             <label>Име:</label>

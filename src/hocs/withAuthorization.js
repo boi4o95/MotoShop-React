@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { Route, Redirect } from 'react-router-dom'
 
-function withAuthorization (Component, role) {
+function withAuthorization (Component, Redirect,role) {
     return class WithAuthorization extends Component {
         constructor (props) {
             super(props)
@@ -12,6 +13,7 @@ function withAuthorization (Component, role) {
 
         componentDidMount = () => {
             let roles = sessionStorage.getItem('Roles')
+
             if (roles) {
                 this.setState({ roles: roles })
             }
@@ -19,6 +21,7 @@ function withAuthorization (Component, role) {
 
         render = () => {
             let userHasAccess = this.state.roles
+            let authorization = this.state.username
             if (userHasAccess) {
                 return <Component {...this.props} />
             } else {

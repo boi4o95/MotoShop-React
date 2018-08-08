@@ -1,48 +1,17 @@
 import React, { Component } from 'react'
-import requester from '../../infrastructure/requester'
-import observer from '../../infrastructure/observer';
-
+import withFormManager from '../../hocs/withFormManager'
+import userModl from '../../models/userModel'
+import userService from '../../services/userService'
 
 class LoginForm extends Component {
-    constructor(props) {
-        super(props)
-
-      this.state = {
-          username: null,
-          password: null
-      }
-    }
-
-    hendlerChange = e => {
-        let fildName = e.target.name
-        let fildValue = e.target.value
-
-        this.setState({ [fildName]: fildValue})
-    }
-
-    submitLogIn(e) {
-        e.preventDefault()
-        requester.post('user', 'login', 'basic', this.state).then(res => {
-            observer.trigger(observer.events.notification, { type: "success", message: "Login successful." })
-            sessionStorage.setItem('username', res.username)
-            sessionStorage.setItem('authtoken', res._kmd.authtoken)
-
-            if(res._kmd.roles){
-                sessionStorage.setItem('Roles', res._kmd.roles)
-            }
-
-            this.props.history.push('/')
-        }).catch(res => observer.trigger(observer.events.notification, { type: "error", message: res.responseJSON.description}))
-    }
-
-
-    render() {
+    render = () => {
         return (
             <div>
                 <h1 className="text">LOGIN</h1>
-                <form onSubmit={this.submitLogIn.bind(this)} id="form">
-                    <input name="username" onChange={this.hendlerChange} placeholder="enter username" required/>
-                    <input type="password" name="password" onChange={this.hendlerChange} placeholder="enter password" required/>
+                <form onSubmit={this.props.hendleSubmit} id="form">
+                    <h1 if="form-error" className="text">{this.props.error}</h1>
+                    <input name="username" onChange={this.props.hendleChange} value={this.props.username} placeholder="enter username" />
+                    <input type="password" name="password" onChange={this.props.hendleChange} value={this.props.password} placeholder="enter password" />
                     <input id="submit" type="submit" value="LOGIN" />
                 </form>
             </div>
@@ -50,4 +19,4 @@ class LoginForm extends Component {
     }
 }
 
-export default LoginForm
+export default withFormManager(LoginForm, userModl, userService.login)

@@ -1,44 +1,21 @@
 import React, { Component } from 'react'
-import requester from '../../infrastructure/requester'
-import observer from '../../infrastructure/observer';
+import withFormManager from '../../hocs/withFormManager'
+import registerModel from '../../models/registerModel'
+import userService from '../../services/userService'
 
-class Register extends Component {
-    constructor(props) {
-        super(props)
 
-      this.state = {
-          username: null,
-          password: null
-      }
-    }
-
-    hendlerChange = e => {
-        let fildName = e.target.name
-        let fildValue = e.target.value
-
-        this.setState({ [fildName]: fildValue})
-    }
-
-    submitRegister(e) {
-        e.preventDefault()
-        requester.post('user', '', 'basic', this.state).then(res => {
-            observer.trigger(observer.events.notification, { type: "success", message: "Register successful ." })
-            sessionStorage.setItem('username', res.username)
-            sessionStorage.setItem('authtoken', res._kmd.authtoken)
-            this.props.history.push('/')
-        }).catch(res => observer.trigger(observer.events.notification, { type: "error", message: res.responseJSON.description}))
-    }
-    
-    render() {
+class RegisterForm extends Component {
+    render= () => {
         return (
             <div>
                 <h1 className="text">REGISTER</h1>
-                <form onSubmit={this.submitRegister.bind(this)} id="form">
-                    <input onChange={this.hendlerChange} name='username' placeholder='enter username' required/>
-                    <input onChange={this.hendlerChange} name='email' placeholder='enter email'required />
-                    <input onChange={this.hendlerChange} name='firstName' placeholder='enter firstName' required/>
-                    <input onChange={this.hendlerChange} name='lastName' placeholder='enter lastName' required/>
-                    <input onChange={this.hendlerChange} type='password' name='password' placeholder='enter password' required/>
+                <form onSubmit={this.props.hendleSubmit} id="form">
+                    <h1 if="form-error" className="text">{this.props.error}</h1>
+                    <input onChange={this.props.hendleChange} name='username' value={this.props.username} placeholder='enter username' />
+                    <input onChange={this.props.hendleChange} type='password' value={this.props.password} name='password' placeholder='enter password' />
+                    <input onChange={this.props.hendleChange} name='email' value={this.props.email} placeholder='enter email' />
+                    <input onChange={this.props.hendleChange} name='firstName'value={this.props.firstName} placeholder='enter firstName' />
+                    <input onChange={this.props.hendleChange} name='lastName' value={this.props.lastName} placeholder='enter lastName' />
                     <input id="submit" type="submit" value="REGISTER" />
                 </form>
             </div>
@@ -46,4 +23,4 @@ class Register extends Component {
     }
 }
 
-export default Register
+export default withFormManager(RegisterForm, registerModel, userService.register)
